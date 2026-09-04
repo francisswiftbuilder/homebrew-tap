@@ -1,0 +1,44 @@
+name: Update Groves Cask
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-groves-cask
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update cask
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: ./script/update_groves_cask.sh
+      - name: Prepare update
+        id: prepare
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          version="$(ruby -ne 'puts $1 if $_ =~ /version \"([^\"]+)\"/' Casks/groves.rb)"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add Casks/groves.rb
+          git commit -m "chore(cask): update Groves to $version"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Validate cask
+        run: |
+          brew style Casks/groves.rb
+          brew tap --custom-remote francisswiftbuilder/tap "$GITHUB_WORKSPACE"
+          brew audit --cask --online francisswiftbuilder/tap/groves
+      - name: Push update
+        if: steps.prepare.outputs.changed == 'true'
+        run: git push
