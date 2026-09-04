@@ -35,6 +35,8 @@ jobs:
           git commit -m "chore(cask): update Groves to $version"
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Validate cask
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
         run: |
           brew style Casks/groves.rb
           brew tap --custom-remote francisswiftbuilder/tap "$GITHUB_WORKSPACE"
