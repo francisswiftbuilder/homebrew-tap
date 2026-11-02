@@ -1,6 +1,6 @@
 cask "groves" do
-  version "1.0.1"
-  sha256 "b781751c28252e61b38ada63c49159db0aad621309082f95ff3082d2afb9eded"
+  version "1.1.0"
+  sha256 "e9758649e01b26d47ab65bfc6f22dcc953ee92065575a246df5737f94904a6c9"
 
   url "https://github.com/francisswiftbuilder/Groves/releases/download/v#{version}/Groves-#{version}.dmg"
   name "Groves"
