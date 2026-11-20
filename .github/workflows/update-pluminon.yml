@@ -1,4 +1,4 @@
-name: Update Groves Cask
+name: Update PLUMINON Cask
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-groves-cask
+  group: update-pluminon-cask
   cancel-in-progress: false
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
       - name: Update cask
         env:
           GH_TOKEN: ${{ github.token }}
-        run: ./script/update_groves_cask.sh
+        run: ./script/update_pluminon_cask.sh
       - name: Prepare update
         id: prepare
         run: |
@@ -28,20 +28,20 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          version="$(ruby -ne 'puts $1 if $_ =~ /version \"([^\"]+)\"/' Casks/groves.rb)"
+          version="$(ruby -ne 'puts $1 if $_ =~ /version \"([^\"]+)\"/' Casks/pluminon.rb)"
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add Casks/groves.rb
-          git commit -m "chore(cask): update Groves to $version"
+          git add Casks/pluminon.rb
+          git commit -m "chore(cask): update PLUMINON to $version"
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Validate cask
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
         run: |
-          brew style Casks/groves.rb
+          brew style Casks/pluminon.rb
           brew tap --custom-remote francisswiftbuilder/tap "$GITHUB_WORKSPACE"
-          brew trust --cask francisswiftbuilder/tap/groves
-          brew audit --cask --online francisswiftbuilder/tap/groves
+          brew trust --cask francisswiftbuilder/tap/pluminon
+          brew audit --cask --online francisswiftbuilder/tap/pluminon
       - name: Push update
         if: steps.prepare.outputs.changed == 'true'
         run: git push

@@ -1,11 +1,13 @@
 # Homebrew Tap
 
-Homebrew Cask distribution for [Groves](https://github.com/francisswiftbuilder/Groves).
+Homebrew Cask distribution for [PLUMINON](https://github.com/francisswiftbuilder/pluminon).
 
 ## Installation
 
 ```bash
-brew install --cask francisswiftbuilder/tap/groves
+brew install --cask francisswiftbuilder/tap/pluminon
 ```
 
-Groves currently uses an ad-hoc signature. On first launch, open **System Settings → Privacy & Security** and choose **Open Anyway** if macOS blocks the app.
+PLUMINON currently uses an ad-hoc signature. On first launch, open **System Settings → Privacy & Security** and choose **Open Anyway** if macOS blocks the app.
+
+Versions up to 1.3.2 were packaged as Groves.app.
