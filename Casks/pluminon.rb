@@ -1,15 +1,15 @@
 cask "pluminon" do
-  version "1.3.2"
-  sha256 "29fe2161ac8e8d8dae66a795e78a05f2ca9c9cf93011a14d6621ba6618988c57"
+  version "2.0.0"
+  sha256 "09e4b1fd81e84001e2eab68ca9c89a17372981d1627b682cbead86bde08a27aa"
 
-  url "https://github.com/francisswiftbuilder/pluminon/releases/download/v#{version}/Groves-#{version}.dmg"
+  url "https://github.com/francisswiftbuilder/pluminon/releases/download/v#{version}/Pluminon-#{version}.dmg"
   name "PLUMINON"
   desc "Native Git client for visual repository management"
   homepage "https://github.com/francisswiftbuilder/pluminon"
 
   depends_on macos: :tahoe
 
-  app "Groves.app"
+  app "Pluminon.app"
 
   caveats <<~EOS
     PLUMINON is currently ad-hoc signed. On first launch, macOS may block the app
