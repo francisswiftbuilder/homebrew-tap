@@ -1,6 +1,6 @@
 cask "pluminon" do
-  version "2.0.0"
-  sha256 "09e4b1fd81e84001e2eab68ca9c89a17372981d1627b682cbead86bde08a27aa"
+  version "2.0.1"
+  sha256 "f612e1d2bfeee17ffce73c0f2f22e91308195a05a9ea2527b767537157c567c9"
 
   url "https://github.com/francisswiftbuilder/pluminon/releases/download/v#{version}/Pluminon-#{version}.dmg"
   name "PLUMINON"
