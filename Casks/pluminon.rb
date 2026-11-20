@@ -12,8 +12,10 @@ cask "pluminon" do
   app "Pluminon.app"
 
   caveats <<~EOS
-    PLUMINON is currently ad-hoc signed. On first launch, macOS may block the app
-    because it cannot verify the developer. After attempting to open Groves,
-    go to System Settings → Privacy & Security and choose Open Anyway.
+    PLUMINON is currently ad-hoc signed and not notarized by Apple.
+    macOS may block the app on first launch.
+
+    To open PLUMINON, go to System Settings → Privacy & Security
+    and click "Open Anyway".
   EOS
 end
